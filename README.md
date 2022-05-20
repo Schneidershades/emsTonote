@@ -1,4 +1,4 @@
-# Project Execution
+# Ems Project Execution
 
 To execute the project please kindly do the following
 
@@ -7,4 +7,5 @@ To execute the project please kindly do the following
 - *cp .env.example .env* 
 - *php artisan serve*
 
-Note: To test you can use *php artisan test*
+<img src="public/0001.jpg" alt="License">
+<img src="public/0002.jpg" alt="License">
