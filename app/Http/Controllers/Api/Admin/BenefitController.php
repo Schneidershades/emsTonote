@@ -16,7 +16,9 @@ class BenefitController extends Controller
 
     public function store(StoreBenefitFormRequest $request)
     {
-        return $this->showAll(Benefit::create($request->validated()));
+        return $this->showOne( 
+            Benefit::create(array_merge($request->validated(), ['total' => $request['unit'] * $request['value']]
+        )));
     }
 
     public function show(Benefit $benefit)
@@ -26,7 +28,9 @@ class BenefitController extends Controller
 
     public function update(UpdateBenefitFormRequest $request, Benefit $benefit)
     {
-        $benefit->update($request->validated());
+        $benefit->update(
+            array_merge($request->validated(), ['total' => $request['unit'] * $request['value']]
+        ));
         return $this->showOne($benefit);
     }
 

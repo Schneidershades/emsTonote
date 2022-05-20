@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreEmployeeFormRequest;
 use App\Http\Requests\Admin\UpdateEmployeeFormRequest;
+use App\Services\MakeAdminService;
 
 class EmployeeController extends Controller
 {
@@ -16,7 +17,10 @@ class EmployeeController extends Controller
 
     public function store(StoreEmployeeFormRequest $request)
     {
-        return $this->showAll(Employee::create($request->validated()));
+        $employee = Employee::create($request->validated());
+        (new MakeAdminService())->createUserAccount($employee);
+        return $this->showAll($employee);
+        
     }
 
     public function show(Employee $employee)
