@@ -29,4 +29,9 @@ class Project extends Model
     {
         return $this->morphMany(Deduction::class, 'deductable');
     }
+
+    public function projectReports()
+    {
+        return $this->hasMany(ProjectReport::class);
+    }
 }
