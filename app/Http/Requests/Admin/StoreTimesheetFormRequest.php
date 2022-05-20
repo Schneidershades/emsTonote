@@ -24,7 +24,10 @@ class StoreTimesheetFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'employee_id' => 'int|exists:employees,id',
+            'period' => 'required|date',
+            'time_in' => 'nullable|boolean',
+            'time_out' => 'nullable|boolean',
         ];
     }
 }

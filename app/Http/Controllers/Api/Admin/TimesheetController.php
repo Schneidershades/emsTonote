@@ -23,15 +23,4 @@ class TimesheetController extends Controller
     {
         return $this->showOne($timesheet);
     }
-
-    public function update(UpdateTimesheetFormRequest $request, Timesheet $timesheet)
-    {
-        $timesheet->update($request->validated());
-        return $this->showOne($timesheet);
-    }
-
-    public function delete(Timesheet $timesheet)
-    {
-        return $timesheet->delete() ? $this->showMessage('timesheet deleted') :  $this->errorResponse('failed to delete timesheet', 409);
-    }
 }

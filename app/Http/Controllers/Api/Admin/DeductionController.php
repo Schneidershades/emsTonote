@@ -16,7 +16,9 @@ class DeductionController extends Controller
 
     public function store(StoreDeductionFormRequest $request)
     {
-        return $this->showAll(Deduction::create($request->validated()));
+        return $this->showOne( 
+            Deduction::create(array_merge($request->validated(), ['total' => $request['unit'] * $request['value']]
+        )));
     }
 
     public function show(Deduction $deduction)
@@ -26,7 +28,9 @@ class DeductionController extends Controller
 
     public function update(UpdateDeductionFormRequest $request, Deduction $deduction)
     {
-        $deduction->update($request->validated());
+        $deduction->update(
+            array_merge($request->validated(), ['total' => $request['unit'] * $request['value']]
+        ));
         return $this->showOne($deduction);
     }
 
