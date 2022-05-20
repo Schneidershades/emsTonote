@@ -24,7 +24,22 @@ class UpdateProjectReportFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'goals' => 'required|string',
+            'approved' => 'required|boolean',
+            'employee_id' => 'int|exists:employees,id',
+            'project_id' => 'int|exists:projects,id',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'is_critical_path' => 'required|boolean',
+            'is_continous' => 'required|boolean',
+            'dependent_work_activity_id' => 'int|exists:projects,id',
+            'blocked_work_activity_id' => 'int|exists:projects,id',
+            'status' => 'required|string',
+            'is_blocked' => 'required|boolean',
+            'is_delayed' => 'required|boolean',
+            'is_completed' => 'required|boolean',
         ];
     }
 }
