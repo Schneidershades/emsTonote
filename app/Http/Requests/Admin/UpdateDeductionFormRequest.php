@@ -24,7 +24,16 @@ class UpdateDeductionFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'employee_id' => 'required|int|exists:employees,id',
+            'deductable_id' => 'nullable|int|exists:employees,id',
+            'deductable_type' => 'nullable|string',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'unit' => 'required|int|min:1',
+            'measure' => 'required|string',
+            'frequency' => 'required|string',
+            'period' => 'required|string',
+            'value' => 'required|numeric|min:1',
         ];
     }
 }

@@ -10,7 +10,7 @@ class MakeAdminService
     {
         User::create([
             'name' => $employee->first_name,
-            'email' => $employee->first_name,
+            'email' => $employee->email,
             'role' => $employee->system_role,
             'password' => substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 8)
         ]);
